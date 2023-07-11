@@ -1,25 +1,14 @@
-{DRAWGBK((CLOSE > 0),STRIP(RGB(4,1,28),RGB(4,1,35),0));}
-
-做空95:HHV((HIGH+LOW+OPEN+2*CLOSE)/5+H-L,5);
-
-做空68:HHV((HIGH+LOW+OPEN+2*CLOSE)/5*2-L,5);
-
-平衡点:LLV((HIGH+LOW+OPEN+2*CLOSE)/5,3);
-
-做多68:LLV((HIGH+LOW+OPEN+2*CLOSE)/5*2-H,8);
-
-做多95:LLV((HIGH+LOW+OPEN+2*CLOSE)/5-H+L,8);
-
-F:=100*(C-REF(C,1))/REF(C,1);
-
-今小昨:=IF(C
-
-P1:=今小昨;
-
-今小前:=IF(C
-
-P2:=今小前;
-
-STICKLINE(P1=0 AND REF(P1,1)=1 AND P2=0 AND REF(P2,1)=1,OPEN,CLOSE,6,0),COLORMAGENTA;
-
-STICKLINE(P1=1 AND REF(P1,1)=0 AND P2=1 AND REF(P2,1)=0,OPEN,CLOSE,3,0),COLORBLUE;
+key = ''
+secret = ''
+symbol = 'GALAUSDT'  # 执行策略的交易对，默认为XRP/USDT,此处设置为GALA/USDT
+step = 0.005  # 步长，即等比网格每两格之间的价差比, 默认为0.5%,此处设置为1.5%
+money = 1  # 下单金额，默认为5USDT,此处设置为10
+precision = 5  # 价格精度，默认为4位小数,此处设置为5位小数
+qty_precision = 1  # 数量精度，默认为1位小数,此处设置为1位小数,此在合约交易中然并卵
+settle = 'usdt'  # 合约本位，默认为usdt, 此处设置为usdt，还可为btc（在gate中用到）
+quanto_multiplier = 0.1  # 计价货币兑换为结算货币的乘数, 默认为10, 此处设置为0.1
+mixed_mode = ('bitusdt','BITUSDT')
+ 
+# 为简化，写成如下：
+by_symbol = 'bitusdt'  # 买交易对
+sl_symbol = 'BITUSDT'  # 卖交易对
